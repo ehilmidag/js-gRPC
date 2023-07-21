@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package todoListPackage;
+
+service TodoList{
+    rpc CreateTodoElement(TodoItem) returns (TodoItem);
+    rpc readTodoList(null) returns (AllTodos);
+}
+message null {}
+message TodoItem {
+    int64 id= 1;
+    string todotext = 2;
+}
+
+message AllTodos {
+    repeated TodoItem items = 1;
+}
