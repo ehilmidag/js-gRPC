@@ -7,7 +7,7 @@ const grpcObj = grpc.loadPackageDefinition(packageDefination);
 const todoListPackage = grpcObj.todoListPackage;
 
 const server = new grpc.Server();
-server.bind("127.0.0.1:40000", grpc.ServerCredentials.createInsecure());
+server.bind("0.0.0.0:40000", grpc.ServerCredentials.createInsecure());
 
 server.addService(todoListPackage.TodoList.service, {
 "createTodoElement":createTodoElement,
