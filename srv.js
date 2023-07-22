@@ -10,7 +10,8 @@ server.bind("0.0.0.0:40000", grpc.ServerCredentials.createInsecure());
 
 server.addService(todoListPackage.TodoList.service, {
 "createTodoElement":createTodoElement,
-"readTodoList":readTodoList
+"readTodoList":readTodoList,
+"readTodoListStream": readTodoListStream
 });
 
 server.start();
@@ -26,4 +27,9 @@ callback(null,todoItem)
 
 function readTodoList(call,callback) {
 callback(null,{"items":todos})
+}
+
+function readTodoListStream(call,callback) {
+    todos.forEach(t=>call.write(t));
+    call.end();
 }

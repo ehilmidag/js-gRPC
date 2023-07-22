@@ -5,6 +5,7 @@ package todoListPackage;
 service TodoList{
     rpc CreateTodoElement(TodoItem) returns (TodoItem);
     rpc readTodoList(voidNoParam) returns (AllTodos);
+    rpc readTodoListStream(voidNoParam) returns(stream TodoItem);
 }
 message voidNoParam {}
 message TodoItem {

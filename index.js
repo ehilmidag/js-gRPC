@@ -21,3 +21,10 @@ index.readTodoList({}, (err,response)=>{
         console.log(i.todotext)
     });
 })
+
+const call = index.readTodoListStream();
+call.on("data",item =>{
+    console.log("received todo  from srv "+ JSON.stringify(item))
+})
+
+call.on("end", e =>console.log("srv done!!!"))
