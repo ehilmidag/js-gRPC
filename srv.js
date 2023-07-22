@@ -5,7 +5,6 @@ const packageDefination = protoLoad.loadSync("todolist.proto",{});
 const grpcObj = grpc.loadPackageDefinition(packageDefination);
 
 const todoListPackage = grpcObj.todoListPackage;
-
 const server = new grpc.Server();
 server.bind("0.0.0.0:40000", grpc.ServerCredentials.createInsecure());
 
@@ -15,11 +14,16 @@ server.addService(todoListPackage.TodoList.service, {
 });
 
 server.start();
-
+const todos = []
 function createTodoElement(call,callback) {
-console.log(call)
+const todoItem ={
+    "id":todos.length+1,
+    "todotext": call.request.todotext
+}
+todos.push(todoItem)
+callback(null,todoItem)
 }
 
 function readTodoList(call,callback) {
-
+callback(null,{"items":todos})
 }

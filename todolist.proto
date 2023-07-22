@@ -4,11 +4,11 @@ package todoListPackage;
 
 service TodoList{
     rpc CreateTodoElement(TodoItem) returns (TodoItem);
-    rpc readTodoList(null) returns (AllTodos);
+    rpc readTodoList(voidNoParam) returns (AllTodos);
 }
-message null {}
+message voidNoParam {}
 message TodoItem {
-    int64 id= 1;
+    int32 id= 1;
     string todotext = 2;
 }
 
