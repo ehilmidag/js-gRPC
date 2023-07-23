@@ -13,7 +13,7 @@ index.CreateTodoElement({
     "id": -1,
     "todotext": text
 }, (err,response)=>{
-    console.log("Received From Srv " + JSON.stringify(response))
+    console.log("Received From server " + JSON.stringify(response))
 })
 
 index.readTodoList({}, (err,response)=>{
@@ -27,4 +27,4 @@ call.on("data",item =>{
     console.log("received todo  from srv "+ JSON.stringify(item))
 })
 
-call.on("end", e =>console.log("srv done!!!"))
+call.on("end", e =>console.log("server done!!!"))
